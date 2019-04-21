@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<Resource 
+		name="jdbc/dsProjetEE"
+		type="javax.sql.DataSource"
+		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		url="jdbc:sqlserver://localhost:1433;database=ProjetEE"
+		username="sa"
+		password="Pa$$w0rd"
+		maxTotal="10"	
+		>
+
+</Resource>
+</Context>
