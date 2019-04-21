@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.beans;
+package fr.eni.ecole.projet.bo;
 
 public class Personne 
 {

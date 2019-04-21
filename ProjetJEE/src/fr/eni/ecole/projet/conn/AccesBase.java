@@ -16,7 +16,6 @@ public class AccesBase
 		DataSource ds;
 		
 		try 
-		
 		{
 			ctxJNDI = new InitialContext();
 			ds = (DataSource) ctxJNDI.lookup("java:comp/env/jdbc/dsProjetEE");
@@ -24,7 +23,6 @@ public class AccesBase
 		} 
 		
 		catch (NamingException e) 
-		
 		{
 			e.printStackTrace();
 		}

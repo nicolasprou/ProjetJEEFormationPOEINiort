@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.utils;
+package fr.eni.ecole.projet.dal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import fr.eni.ecole.projet.beans.Personne;
+import fr.eni.ecole.projet.bo.Personne;
 import fr.eni.ecole.projet.conn.AccesBase;
 
 
@@ -16,7 +16,7 @@ public class PersonneDAO
 	{
 		Connection conn = null;
 		
-		String sql = "SELECT * FROM PERSONNE WHERE mail=? and mdp=?";
+		String sql = "SELECT * FROM PERSONNES WHERE email=? and mdp=?";
 		Personne personne = null;
 		
 		conn = AccesBase.getConnection();
@@ -28,7 +28,7 @@ public class PersonneDAO
         
         if(rs.next())
         {
-        	personne = new Personne(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getInt("id_statut"), rs.getString("mail"), rs.getString("mdp"));
+        	personne = new Personne(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getInt("id_statuts"), rs.getString("email"), rs.getString("mdp"));
         	
         }
         	
@@ -38,7 +38,7 @@ public class PersonneDAO
 	
 	public static void insertUser(Personne personne)
 	{
-		String sql = "INSERT INTO PERSONNE (nom, prenom, id_statut, mail, mdp) values (?,?,?,?,?); ";
+		String sql = "INSERT INTO PERSONNE (nom, prenom, email, mdp, avatar_uri, commentaire, id_statuts) values (?,?,?,?,?,?,?); ";
 		PreparedStatement pstm = null;
 		Connection conn = null;
 		
@@ -49,11 +49,11 @@ public class PersonneDAO
 				
 				pstm.setString(1, personne.getNom());
 				pstm.setString(2, personne.getPrenom());
-				pstm.setInt(3, 3);
-				pstm.setString(4, personne.getMail());
-				pstm.setString(5, personne.getMdp());
-//				pstm.setString(6, null);
-//				pstm.setString(7, null);
+				pstm.setString(3, personne.getMail());
+				pstm.setString(4, personne.getMdp());
+				pstm.setString(5, personne.getAvatar_uri());
+				pstm.setString(6, personne.getCom());
+				pstm.setInt(7, 3);
 			
 				int nbLignes = pstm.executeUpdate();
 				if (nbLignes==1)

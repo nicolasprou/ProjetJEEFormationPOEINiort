@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<c:if test = "${sessionScope.mail == null}">
+	         <meta http-equiv="refresh" content="0; url=accueil" />
+	    </c:if>
 		<title>Mon compte</title>
 		<link rel="stylesheet" href="css/monCompte.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -25,6 +32,12 @@
 		    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 		      <div class="card-body">
 		        <form>
+		        	<div class="input-group mb-3 col-12">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text">Adresse actuelle</span>
+					  </div>
+					  <input type="text" readonly class="form-control" id="staticEmail" value="${sessionScope.mail}">
+					</div>
 		        	<div class="input-group mb-3 col-12">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text">@</span>

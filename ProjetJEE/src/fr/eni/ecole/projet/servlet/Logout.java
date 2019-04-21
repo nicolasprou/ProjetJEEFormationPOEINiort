@@ -23,7 +23,7 @@ public class Logout extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("mail");
 		session.invalidate();
-		response.sendRedirect("/connexion");
+		response.sendRedirect("connexion");
 	
 	}
 

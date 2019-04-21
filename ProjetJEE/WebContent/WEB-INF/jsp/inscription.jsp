@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<meta charset="UTF-8">
 		<title>Inscription</title>
 		<link rel="stylesheet" href="css/inscription.css">
@@ -55,7 +59,11 @@
 				  </div>
 				  <input type="text" name="com" class="form-control" placeholder="Comment avez-vous connu le site ?">
 				</div>
-
+				<c:if test = "${erreurPassword != null}">
+					<div class="alert alert-danger mb-3 col-12" role="alert">
+					  ${erreurPassword}
+					</div>
+	    		</c:if>
 				<div class="col-12">
 			      <button type="submit" class="btn btn-primary">S'inscrire</button>
 			    </div>

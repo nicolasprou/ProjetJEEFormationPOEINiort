@@ -4,6 +4,17 @@
   <welcome-file-list>
     <welcome-file>JSPAccueil</welcome-file>
   </welcome-file-list>
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
+  <filter>
+    <filter-name>FiltreAuth</filter-name>
+    <filter-class>fr.eni.ecole.projet.filtre.FiltreAuth</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltreAuth</filter-name>
+    <url-pattern>/mon_compte</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>JSPAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/accueil.jsp</jsp-file>
