@@ -9,4 +9,44 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+  	<servlet-name>JSPAccueil</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/accueil.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JSPAccueil</servlet-name>
+  	<url-pattern>/accueil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>JSPConnexion</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/connexion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JSPConnexion</servlet-name>
+  	<url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>JSPInscription</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/inscription.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JSPInscription</servlet-name>
+  	<url-pattern>/inscription</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>JSPMonCompte</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/monCompte.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JSPMonCompte</servlet-name>
+  	<url-pattern>/mon_compte</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>JSPAjouterPlat</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/ajouterPlat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JSPAjouterPlat</servlet-name>
+  	<url-pattern>/ajouter_plat</url-pattern>
+  </servlet-mapping>
 </web-app>
