@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -111,6 +112,24 @@
 		  </div>
 		  <h1 class="text-center">Mes commentaires</h1>
 		  <hr>
+		  <div id="commentaires" class="row align-items-center justify-content-around">
+			  <c:forEach items="${listeCom}" var="com">		    
+			    <div class="col-5 m-3 card text-center">
+				  <div class="card-header">
+				    <h3>${com.nomPlat}</h3>
+				  </div>
+				  <div class="card-body">
+				    ${com.contenu}
+				  </div>
+				  <div class="card-footer text-muted">
+				    <div class="d-flex justify-content-between">
+				    	<div>Noté ${com.note}/5</div>
+				    	<div><fmt:formatDate value="${com.dateCom}" pattern="dd MMMM yyyy"/></div>
+				    </div>
+				  </div>
+			  	</div>			
+			  </c:forEach>
+		  </div>
 		</div>
 	</body>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

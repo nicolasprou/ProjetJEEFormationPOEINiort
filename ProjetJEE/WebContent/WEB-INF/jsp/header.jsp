@@ -7,6 +7,9 @@
 		<div id="listeMenu" class="navbar-nav">
 		   <a class="nav-item nav-link active" href="accueil">Accueil</a>
 		   <a class="nav-item nav-link" href="#">Nos Plats</a>
+		   <c:if test = "${sessionScope.mail != null && sessionScope.id_statut == 1}">
+	      	 <a class="nav-item nav-link" href="#">Ajouter un plat</a>
+	       </c:if>
 		   <a class="nav-item nav-link" href="#">Forum</a>
 		</div>
 		<div id="loginMenu" class="navbar-nav justify-content-end">
@@ -16,7 +19,7 @@
 	      </c:if>
 	      <c:if test = "${sessionScope.mail != null}">
 	      	 <a class="nav-item nav-link active">Bonjour, ${sessionScope.prenom}</a>
-	      	 <a class="nav-item nav-link" href="mon_compte">Mon compte</a>
+	      	 <a class="nav-item nav-link" href="MonCompte">Mon compte</a>
 	      	 <form action="Logout">
 	         <a class="nav-item nav-link" href="Logout">Déconnexion</a>
 	    	 </form>	

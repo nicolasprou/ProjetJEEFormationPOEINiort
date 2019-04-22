@@ -27,38 +27,37 @@ public class Login extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{		
 		String mail = request.getParameter("mail");
 		String mdp = request.getParameter("mdp");
 		
 		PersonneDAO pdao = new PersonneDAO();
 		try 
+		{
+			Personne personne = PersonneDAO.checkUser(mail, mdp);
+			if (personne != null)
 			{
-				Personne personne = PersonneDAO.checkUser(mail, mdp);
-				if (personne != null)
-					{
-						HttpSession session = request.getSession();
-						session.setAttribute("mail", mail);
-						session.setAttribute("nom", personne.getNom());
-						session.setAttribute("prenom", personne.getPrenom());
-						session.setAttribute("id_statut", personne.getId_statut());
-					
-						RequestDispatcher rd = request.getRequestDispatcher("accueil");
-						rd.forward(request, response);
-					}
+				HttpSession session = request.getSession();
+				session.setAttribute("mail", mail);
+				session.setAttribute("id", personne.getId());
+				session.setAttribute("nom", personne.getNom());
+				session.setAttribute("prenom", personne.getPrenom());
+				session.setAttribute("id_statut", personne.getId_statut());
 			
-				else 
-					{
-						RequestDispatcher rd = request.getRequestDispatcher("connexion");
-						rd.forward(request, response);
-					}
-			} 
-				catch (SQLException e) 
-					{
-						e.printStackTrace();
-					}
+				RequestDispatcher rd = request.getRequestDispatcher("accueil");
+				rd.forward(request, response);
+			}		
+			else 
+			{
+				RequestDispatcher rd = request.getRequestDispatcher("connexion");
+				rd.forward(request, response);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	
 	}
 

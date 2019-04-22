@@ -49,6 +49,7 @@ public class Register extends HttpServlet {
 			PersonneDAO.insertUser(personne);
 			
 			HttpSession session = request.getSession();
+			session.setAttribute("id", personne.getId());
 			session.setAttribute("mail", mail);
 			session.setAttribute("nom", nom);
 			session.setAttribute("prenom", prenom);
