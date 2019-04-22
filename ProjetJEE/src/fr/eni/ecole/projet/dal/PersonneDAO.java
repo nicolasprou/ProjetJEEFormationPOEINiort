@@ -38,39 +38,37 @@ public class PersonneDAO
 	
 	public static void insertUser(Personne personne)
 	{
-		String sql = "INSERT INTO PERSONNE (nom, prenom, email, mdp, avatar_uri, commentaire, id_statuts) values (?,?,?,?,?,?,?); ";
+		String sql = "INSERT INTO PERSONNES (nom, prenom, email, mdp, commentaire, id_statuts) values (?,?,?,?,?,?); ";
 		PreparedStatement pstm = null;
 		Connection conn = null;
 		
 		try 
-			{
-				conn = AccesBase.getConnection();
-				pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				
-				pstm.setString(1, personne.getNom());
-				pstm.setString(2, personne.getPrenom());
-				pstm.setString(3, personne.getMail());
-				pstm.setString(4, personne.getMdp());
-				pstm.setString(5, personne.getAvatar_uri());
-				pstm.setString(6, personne.getCom());
-				pstm.setInt(7, 3);
+		{						
+			conn = AccesBase.getConnection();
+			pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
-				int nbLignes = pstm.executeUpdate();
-				if (nbLignes==1)
-				{
-					ResultSet rs = pstm.getGeneratedKeys();
-					if (rs.next())
-					{
-						int cle= rs.getInt(1);
-						System.out.println(cle);
-						personne.setId(cle);
-					}
-				}
-			} 
-		catch (SQLException e) 
+			pstm.setString(1, personne.getNom());
+			pstm.setString(2, personne.getPrenom());
+			pstm.setString(3, personne.getMail());
+			pstm.setString(4, personne.getMdp());
+			pstm.setString(5, personne.getCom());
+			pstm.setInt(6, 3);
+		
+			int nbLignes = pstm.executeUpdate();
+			if (nbLignes==1)
 			{
-				e.printStackTrace();
+				ResultSet rs = pstm.getGeneratedKeys();
+				if (rs.next())
+				{
+					int cle= rs.getInt(1);
+					personne.setId(cle);
+				}
 			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 		
 	}
 }

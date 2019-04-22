@@ -64,5 +64,4 @@ public class Register extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-
 }
