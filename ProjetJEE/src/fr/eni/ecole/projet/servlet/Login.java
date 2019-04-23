@@ -50,6 +50,7 @@ public class Login extends HttpServlet {
 			}		
 			else 
 			{
+				request.setAttribute("erreurPassword", "Identifiant ou mot de passe incorrect");
 				RequestDispatcher rd = request.getRequestDispatcher("connexion");
 				rd.forward(request, response);
 			}

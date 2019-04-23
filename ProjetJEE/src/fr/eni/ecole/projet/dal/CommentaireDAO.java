@@ -13,9 +13,9 @@ import fr.eni.ecole.projet.conn.AccesBase;
 
 public class CommentaireDAO 
 {
-	Connection conn = null;
-	PreparedStatement pstm = null;
-	ResultSet rs = null;
+	private Connection conn = null;
+	private PreparedStatement pstm = null;
+	private ResultSet rs = null;
 	
 	private static final String SELECT_BY_ID_PERSONNE = "SELECT contenu, nom, note, date_com  FROM Commentaires AS com " + 
 														"INNER JOIN Asso_com_uti_plat_table AS asso ON com.id = asso.id_Commentaires " + 
