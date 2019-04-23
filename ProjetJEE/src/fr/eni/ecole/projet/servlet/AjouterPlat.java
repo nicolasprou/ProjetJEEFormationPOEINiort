@@ -26,7 +26,7 @@ import fr.eni.ecole.projet.dal.PlatDAO;
  */
 public class AjouterPlat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String SAVE_DIR = "/img";
+	private static final String SAVE_DIR = "img";
 	public static final int TAILLE_TAMPON = 10240;
     
 	/**
@@ -53,17 +53,19 @@ public class AjouterPlat extends HttpServlet {
 	{	
 		try
 		{	
-			String uploadPath = getServletContext().getRealPath("") + File.separator + SAVE_DIR;
+			String uploadPath = getServletContext().getRealPath("") + SAVE_DIR;
 			
 			File fileSaveDir = new File(uploadPath);
 			
 			if (!fileSaveDir.exists()) {
 				fileSaveDir.mkdir();
 			}
-			Part part = request.getPart("file");
-			String fileName = extractFileName(part);
 			
-			part.write(uploadPath + File.separator + fileName);
+			Part part = request.getPart("image");
+			System.out.println(part);
+			String fileName = extractFileName(part);
+			String cheminFichier = uploadPath + File.separator + fileName;
+			part.write(cheminFichier);
 			
 			String nom = request.getParameter("nom");
 			String description = request.getParameter("description");
@@ -71,7 +73,7 @@ public class AjouterPlat extends HttpServlet {
 			Float prix = Float.valueOf(request.getParameter("prix"));
 			
 			PlatDAO platDAO = new PlatDAO();
-			Plat plat = new Plat(nom, description, "", 0, prix, ingredients);
+			Plat plat = new Plat(nom, description, cheminFichier, 0, prix, ingredients);
 			platDAO.insertPlat(plat);
 			
 			request.setAttribute("valide", "Vous avez bien ajouté le plat");
