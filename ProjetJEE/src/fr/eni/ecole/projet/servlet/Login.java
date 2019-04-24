@@ -20,7 +20,7 @@ import fr.eni.ecole.projet.dal.PersonneDAO;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
+	private int i = 1;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		RequestDispatcher rd = request.getRequestDispatcher("connexion");
@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{		
+	{	
 		String mail = request.getParameter("mail");
 		String mdp = request.getParameter("mdp");
 		
@@ -49,10 +49,20 @@ public class Login extends HttpServlet {
 				rd.forward(request, response);
 			}		
 			else 
-			{
-				request.setAttribute("erreurPassword", "Identifiant ou mot de passe incorrect");
-				RequestDispatcher rd = request.getRequestDispatcher("connexion");
-				rd.forward(request, response);
+			{  	
+				if(i == 3)
+				{
+					i = 1;
+					RequestDispatcher rd = request.getRequestDispatcher("inscription");
+					rd.forward(request, response);
+				}
+				else if(i < 3)
+				{
+					i++;
+					request.setAttribute("erreurPassword", "Identifiant ou mot de passe incorrect");
+					RequestDispatcher rd = request.getRequestDispatcher("connexion");
+					rd.forward(request, response);
+				}
 			}
 		} 
 		catch (SQLException e) 
