@@ -8,7 +8,7 @@
 		   <a class="nav-item nav-link active" href="accueil">Accueil</a>
 		   <a class="nav-item nav-link" href="#">Nos Plats</a>
 		   <c:if test = "${sessionScope.mail != null && sessionScope.id_statut == 1}">
-	      	 <a class="nav-item nav-link" href="#">Ajouter un plat</a>
+	      	 <a class="nav-item nav-link" href="AjouterPlat">Ajouter un plat</a>
 	       </c:if>
 		   <a class="nav-item nav-link" href="#">Forum</a>
 		</div>

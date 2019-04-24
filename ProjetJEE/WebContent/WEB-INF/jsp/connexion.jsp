@@ -30,6 +30,11 @@
 				  </div>
 				  <input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
 				</div>
+				<c:if test = "${erreurPassword != null}">
+					<div class="alert alert-danger mb-3 col-12" role="alert">
+					  ${erreurPassword}
+					</div>
+	    		</c:if>
 				<div class="col-12">
 			      <button type="submit" class="btn btn-primary">Se connecter</button>
 			    </div>

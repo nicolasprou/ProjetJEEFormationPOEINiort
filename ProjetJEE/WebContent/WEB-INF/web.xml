@@ -88,4 +88,5 @@
   	<servlet-name>UploadPhoto</servlet-name>
   	<url-pattern>/UploadPhoto</url-pattern>
   </servlet-mapping>
+
 </web-app>
