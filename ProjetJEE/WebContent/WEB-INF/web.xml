@@ -48,7 +48,8 @@
     <url-pattern>/mon_compte</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>JSPAjouterPlat</servlet-name>
+    <servlet-name>JSP
+      Plat</servlet-name>
     <jsp-file>/WEB-INF/jsp/ajouterPlat.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
