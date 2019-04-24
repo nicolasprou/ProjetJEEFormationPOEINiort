@@ -53,6 +53,7 @@ public class AjouterPlat extends HttpServlet {
 	{	
 		try
 		{	
+			int id = (int) request.getSession().getAttribute("id");
 			String uploadPath = getServletContext().getRealPath("") + SAVE_DIR;
 			
 			File fileSaveDir = new File(uploadPath);
@@ -64,7 +65,7 @@ public class AjouterPlat extends HttpServlet {
 			Part part = request.getPart("image");
 			System.out.println(part);
 			String fileName = extractFileName(part);
-			String cheminFichier = uploadPath + File.separator + fileName;
+			String cheminFichier = uploadPath + File.separator + id + fileName;
 			part.write(cheminFichier);
 			
 			String nom = request.getParameter("nom");
@@ -72,8 +73,9 @@ public class AjouterPlat extends HttpServlet {
 			String ingredients = request.getParameter("ingredients");
 			Float prix = Float.valueOf(request.getParameter("prix"));
 			
+			String filePath = SAVE_DIR + File.separator + id + fileName;
 			PlatDAO platDAO = new PlatDAO();
-			Plat plat = new Plat(nom, description, cheminFichier, 0, prix, ingredients);
+			Plat plat = new Plat(nom, description, filePath, 0, prix, ingredients);
 			platDAO.insertPlat(plat);
 			
 			request.setAttribute("valide", "Vous avez bien ajouté le plat");
