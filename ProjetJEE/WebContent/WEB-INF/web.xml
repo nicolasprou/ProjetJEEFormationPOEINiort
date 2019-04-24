@@ -55,4 +55,36 @@
     <servlet-name>JSPAjouterPlat</servlet-name>
     <url-pattern>/ajouter_plat</url-pattern>
   </servlet-mapping>
+  <servlet>
+	<servlet-name>AjouterPlat</servlet-name>
+	<servlet-class>fr.eni.ecole.projet.servlet.AjouterPlat</servlet-class>
+	<init-param>
+		<param-name>chemin</param-name> 
+		<param-value>img/</param-value> 
+	</init-param>
+	<multipart-config>
+		<location>D:\\Projet/tmp/</location>
+		<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+		<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+		<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+	</multipart-config>
+  </servlet>
+  <servlet>
+	<servlet-name>UploadPhoto</servlet-name>
+	<servlet-class>fr.eni.ecole.projet.servlet.UploadPhoto</servlet-class>
+	<init-param>
+		<param-name>chemin</param-name> 
+		<param-value>img/</param-value> 
+	</init-param>
+	<multipart-config>
+		<location>D:\\Projet/tmp/</location>
+		<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+		<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+		<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+	</multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UploadPhoto</servlet-name>
+  	<url-pattern>/UploadPhoto</url-pattern>
+  </servlet-mapping>
 </web-app>
