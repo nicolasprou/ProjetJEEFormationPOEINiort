@@ -1,13 +1,16 @@
 package fr.eni.ecole.projet.bo;
 
+
 public class Personne 
 {
 	private int id, id_statut;
-	private String nom, prenom, mail, mdp, avatar_uri, com;
+	private String nom, prenom, mail, mdp, com;
+	private String avatar_uri = null;
 	
 	public Personne() {
 		super();
 	}
+	
 	
 	
 	public Personne(int id, String nom, String prenom,  int id_statut, String mail, String mdp) {
@@ -42,6 +45,7 @@ public class Personne
 		this.avatar_uri = avatar_uri;
 		this.com = com;
 	}
+
 
 	public int getId() {
 		return id;
@@ -113,6 +117,9 @@ public class Personne
 				+ mail + ", mdp=" + mdp + ", avatar_uri=" + avatar_uri + ", com=" + com + "]";
 	}
 
+
+
+	
 
 	
 	

@@ -2,6 +2,7 @@ package fr.eni.ecole.projet.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Blob;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class Register extends HttpServlet {
 		String mdp = request.getParameter("mdp");
 		String mdpConf = request.getParameter("mdpConf");
 		String com = request.getParameter("com");
-		String avatar = "null";
+		String avatar = null;
 		int id_statut = 3;
 		
 		

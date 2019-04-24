@@ -1,13 +1,20 @@
 package fr.eni.ecole.projet.dal;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.http.Part;
+
 import fr.eni.ecole.projet.bo.Personne;
 import fr.eni.ecole.projet.conn.AccesBase;
+import sun.security.provider.certpath.ResponderId;
 
 
 public class PersonneDAO 
@@ -71,4 +78,68 @@ public class PersonneDAO
 		}
 		
 	}
-}
+
+	public static void updateMail(Personne personne)
+	{
+		String sql="UPDATE PERSONNES SET email=? WHERE id=?";
+		PreparedStatement pstm = null;
+		Connection conn = null;
+		
+		try {
+			conn = AccesBase.getConnection();
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, personne.getMail());
+			pstm.setInt(2, personne.getId());
+			pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void updateMdp(Personne personne)
+	{
+		String sql="UPDATE PERSONNES SET mdp=? WHERE id=?";
+		PreparedStatement pstm = null;
+		Connection conn = null;
+		
+		try {
+			conn = AccesBase.getConnection();
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, personne.getMdp());
+			pstm.setInt(2, personne.getId());
+			pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+//	@SuppressWarnings("unused")
+//	public static void updatePhoto (Personne personne) throws SQLException
+//	{
+//		 String sql = "INSERT INTO PERSONNES (avatar_uri) values(?) WHERE id=?";
+//		 PreparedStatement pstm = null;
+//		 Connection conn = null;
+//		 
+//		 
+//		 conn = AccesBase.getConnection();
+//		 pstm = conn.prepareStatement(sql);
+//			
+//		 pstm.setBinaryStream(1, fis);
+//		 pstm.setInt(2, personne.getId());
+//		 pstm.executeUpdate();
+//		 
+//		 
+//		}
+	 
+				
+} 
+		 
+		 
+			 
+		 
+	
+	
