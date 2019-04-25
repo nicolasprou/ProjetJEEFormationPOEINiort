@@ -8,6 +8,7 @@ public class Reservation
 	public Reservation() {
 		super();
 	}
+	
 	public Reservation(int id_Table, int nbPersonnes, String nom, String telephone_reserv) {
 		super();
 		this.id_Table = id_Table;

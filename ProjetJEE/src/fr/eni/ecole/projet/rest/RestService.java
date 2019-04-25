@@ -7,6 +7,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Application;
 import fr.eni.ecole.projet.bo.Reservation;
 import fr.eni.ecole.projet.bo.Table;
@@ -38,6 +39,17 @@ public class RestService extends Application
 		listeTables = tableDAO.selectTableLibre();
 
 		return listeTables;
+	}
+	
+	//http://localhost:8080/ProjetJEE/rest/RestService/reservation/{idTable}
+	@GET
+	@Path("/reservation/{idTable}")
+	public String selectNomReservation(@PathParam("idTable") int id) 
+	{
+		ReservationDAO reservDAO = new ReservationDAO();
+		String nomReserv = reservDAO.selectNomResa(id);
+
+		return nomReserv;
 	}
 	
 	//http://localhost:8080/ProjetJEE/rest/RestService/occupation
@@ -94,4 +106,6 @@ public class RestService extends Application
 		
 		return reservation;		
 	}
+	
+	
 }
