@@ -48,12 +48,11 @@
     <url-pattern>/mon_compte</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>JSP
-      Plat</servlet-name>
+    <servlet-name>JSPPlat</servlet-name>
     <jsp-file>/WEB-INF/jsp/ajouterPlat.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>JSPAjouterPlat</servlet-name>
+    <servlet-name>JSPPlat</servlet-name>
     <url-pattern>/ajouter_plat</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -70,6 +69,10 @@
 		<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
 	</multipart-config>
   </servlet>
+  <servlet-mapping>
+  	<servlet-name>AjouterPlat</servlet-name>
+  	<url-pattern>/AjouterPlat</url-pattern>
+  </servlet-mapping>
   <servlet>
 	<servlet-name>UploadPhoto</servlet-name>
 	<servlet-class>fr.eni.ecole.projet.servlet.UploadPhoto</servlet-class>
