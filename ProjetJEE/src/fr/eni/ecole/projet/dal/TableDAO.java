@@ -152,6 +152,25 @@ public class TableDAO {
 		return tables;
 	}
 	
+	public void libreToResa(Table table)
+	{
+		Connection conn = null;
+		String sql = "UPDATE TABLES SET id_Etats_Tables = 2 WHERE id = ?";
+		
+		try 
+		{
+			conn = AccesBase.getConnection();
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			
+			pstm.setInt(1, table.getId());
+			pstm.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	}	
+	
 	
 	private Table map(ResultSet rs) throws SQLException 
 	{	
