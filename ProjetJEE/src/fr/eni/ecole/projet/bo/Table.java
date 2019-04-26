@@ -15,6 +15,12 @@ public class Table
 		super();
 	}
 
+	public Table(int id, int id_Etats_Tables) {
+		super();
+		this.id = id;
+		this.id_Etats_Tables = id_Etats_Tables;
+	}
+
 	public int getId() {
 		return id;
 	}

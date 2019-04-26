@@ -3,11 +3,17 @@ package fr.eni.ecole.projet.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Application;
 
+import fr.eni.ecole.projet.bo.Reservation;
 import fr.eni.ecole.projet.bo.Table;
+import fr.eni.ecole.projet.dal.ReservationDAO;
 import fr.eni.ecole.projet.dal.TableDAO;
 
 @Path("/RestService")
@@ -71,5 +77,35 @@ public class RestService extends Application
 		listeTables = tableDAO.selectTableOC();
 		
 		return listeTables;
+	}
+
+	@POST
+	@Path("/reservation")
+	public Reservation ajouterReservation(@FormParam("nom") String nom,
+							  			  @FormParam("nbrePersonne") String nbrePersonne,
+							  			  @FormParam("telPersonne") String telPersonne,
+							  			  @FormParam("id") String id)
+	{
+		int idTable = Integer.valueOf(id);
+		int nbPersonne = Integer.valueOf(nbrePersonne);
+		ReservationDAO reservationDAO = new ReservationDAO();
+		TableDAO tableDAO = new TableDAO();
+		Table table = new Table(idTable, 2);
+		Reservation reservation = new Reservation(idTable, nbPersonne, nom, telPersonne);
+		reservationDAO.ajouterResa(reservation);
+		tableDAO.libreToResa(table);
+		
+		return reservation;		
+	}
+	
+	@DELETE
+	@Path("/reservation/{idTable}")
+	public void supprimerResa(@PathParam ("idTable") int id)
+	{
+		TableDAO tableDAO = new TableDAO();
+		Table table = new Table(id, 1);
+		ReservationDAO resa = new ReservationDAO();
+		resa.deleteResa(id);
+		tableDAO.etatLibre(table);		
 	}
 }
