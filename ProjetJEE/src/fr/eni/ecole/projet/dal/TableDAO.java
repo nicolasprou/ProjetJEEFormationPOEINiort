@@ -151,7 +151,28 @@ public class TableDAO {
 			
 		return tables;
 	}
+  
+	// Changement to id_Etats_Tables --> 1
+	public void etatLibre(Table table)
+	{
+		Connection conn = null;
+		String sql = "UPDATE TABLES SET id_Etats_Tables = 1 WHERE id = ?";
+		
+		try 
+		{
+			conn = AccesBase.getConnection();
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, table.getId());
+			pstm.executeUpdate();
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}	
 	
+	// Changement to id_Etats_Tables --> 2
 	public void libreToResa(Table table)
 	{
 		Connection conn = null;
@@ -169,8 +190,49 @@ public class TableDAO {
 		{
 			e.printStackTrace();
 		}
-	}	
+	}
 	
+	// Changement to id_Etats_Tables --> 3
+		public void etatONC(Table table)
+		{
+			Connection conn = null;
+			String sql = "UPDATE TABLES SET id_Etats_Tables = 3 WHERE id = ?";
+			
+			try 
+			{
+				conn = AccesBase.getConnection();
+				PreparedStatement pstm = conn.prepareStatement(sql);
+				
+				pstm.setInt(1, table.getId());
+				pstm.executeUpdate();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		
+		}
+		
+		// Changement to id_Etats_Tables --> 3
+				public void etatOC(Table table)
+				{
+					Connection conn = null;
+					String sql = "UPDATE TABLES SET id_Etats_Tables = 4 WHERE id = ?";
+					
+					try 
+					{
+						conn = AccesBase.getConnection();
+						PreparedStatement pstm = conn.prepareStatement(sql);
+						
+						pstm.setInt(1, table.getId());
+						pstm.executeUpdate();
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+				
+				}
 	
 	private Table map(ResultSet rs) throws SQLException 
 	{	

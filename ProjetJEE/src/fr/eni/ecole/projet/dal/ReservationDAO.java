@@ -11,6 +11,7 @@ import fr.eni.ecole.projet.conn.AccesBase;
 
 public class ReservationDAO 
 {
+  
 	private Connection conn = null;
 	private PreparedStatement pstm = null;
 	private ResultSet rs = null;
@@ -55,9 +56,11 @@ public class ReservationDAO
 			}
 		}
 	}
-	
+
 	public void ajouterResa(Reservation reservation)
 	{
+		Connection conn;
+    
 		try 
 		{
 			conn = AccesBase.getConnection();
@@ -69,9 +72,11 @@ public class ReservationDAO
 			pstm.setString(1, reservation.getNom());
 			pstm.setString(2, reservation.getTelephone_reserv());
 			pstm.setInt(3, reservation.getNbPersonnes());
-			pstm.setInt(4, reservation.getId_Table());
-						
-			rs = pstm.getGeneratedKeys();
+			pstm.setInt(4, reservation.getId_Table());	
+			pstm.executeUpdate();
+
+      rs = pstm.getGeneratedKeys();	
+      
 			if(rs.next())
 			{
 				reservation.setId(rs.getInt(1));
@@ -113,5 +118,26 @@ public class ReservationDAO
 		}
 		
 		return reserv;
+	}
+	
+	public void deleteResa(int id)
+	{
+		String sql = "DELETE FROM Reservations WHERE id_Tables=?";
+		
+		try 
+		{
+			conn = AccesBase.getConnection();
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1,  id);
+			pstm.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			fermeture();
+		}
 	}
 }

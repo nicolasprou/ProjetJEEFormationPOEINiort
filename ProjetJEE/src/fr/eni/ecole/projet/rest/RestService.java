@@ -3,6 +3,7 @@ package fr.eni.ecole.projet.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -107,6 +108,15 @@ public class RestService extends Application
 		
 		return reservation;		
 	}
-	
-	
+  
+	@DELETE
+	@Path("/reservation/{idTable}")
+	public void supprimerResa(@PathParam ("idTable") int id)
+	{
+		TableDAO tableDAO = new TableDAO();
+		Table table = new Table(id, 1);
+		ReservationDAO resa = new ReservationDAO();
+		resa.deleteResa(id);
+		tableDAO.etatLibre(table);		
+	}
 }
