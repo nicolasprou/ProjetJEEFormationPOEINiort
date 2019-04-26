@@ -151,7 +151,7 @@ public class TableDAO {
 			
 		return tables;
 	}
-	
+  
 	// Changement to id_Etats_Tables --> 1
 	public void etatLibre(Table table)
 	{
@@ -190,7 +190,6 @@ public class TableDAO {
 		{
 			e.printStackTrace();
 		}
-	
 	}
 	
 	// Changement to id_Etats_Tables --> 3
