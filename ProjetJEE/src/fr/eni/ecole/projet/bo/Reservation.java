@@ -16,6 +16,13 @@ public class Reservation
 		this.nom = nom;
 		this.telephone_reserv = telephone_reserv;
 	}
+	public Reservation(String nom, String telephone_reserv, int nb_personne) {
+		super();
+		this.nom = nom;
+		this.nbPersonnes = nb_personne;
+		this.telephone_reserv = telephone_reserv;
+	}
+
 	public int getId() {
 		return id;
 	}

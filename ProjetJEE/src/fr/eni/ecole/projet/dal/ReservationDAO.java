@@ -15,7 +15,7 @@ public class ReservationDAO
 	private PreparedStatement pstm = null;
 	private ResultSet rs = null;
 	
-	private static final String SELECT_NAME_RESA = "SELECT nom FROM Reservations WHERE id_Tables = ?"; 
+	private static final String SELECT_RESA = "SELECT nom, telephone_reserv, nbre_personne FROM Reservations WHERE id_Tables = ?"; 
 			
 	public void fermeture()
 	{
@@ -87,20 +87,20 @@ public class ReservationDAO
 		}
 	}
 	
-	public String selectNomResa(int id)
+	public Reservation selectResa(int id)
 	{
-		String nomReserv = "";
+		Reservation reserv = null;
 		
 		try 
 		{
 			conn = AccesBase.getConnection();
-			pstm = conn.prepareStatement(SELECT_NAME_RESA);		
+			pstm = conn.prepareStatement(SELECT_RESA);		
 			pstm.setInt(1, id);
 			rs = pstm.executeQuery();
 			
 			if(rs.next())
 			{
-				nomReserv = rs.getString("nom");
+				reserv = new Reservation(rs.getString("nom"), rs.getString("telephone_reserv"), rs.getInt("nbre_personne"));
 			}
 		} 
 		catch (SQLException e) 
@@ -112,6 +112,6 @@ public class ReservationDAO
 			fermeture();
 		}
 		
-		return nomReserv;
+		return reserv;
 	}
 }

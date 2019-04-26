@@ -44,12 +44,13 @@ public class RestService extends Application
 	//http://localhost:8080/ProjetJEE/rest/RestService/reservation/{idTable}
 	@GET
 	@Path("/reservation/{idTable}")
-	public String selectNomReservation(@PathParam("idTable") int id) 
+	public Reservation selectNomReservation(@PathParam("idTable") int id) 
 	{
 		ReservationDAO reservDAO = new ReservationDAO();
-		String nomReserv = reservDAO.selectNomResa(id);
+		Reservation reserv = new Reservation();
+		reserv = reservDAO.selectResa(id);
 
-		return nomReserv;
+		return reserv;
 	}
 	
 	//http://localhost:8080/ProjetJEE/rest/RestService/occupation
